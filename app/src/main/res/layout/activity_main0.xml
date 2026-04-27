@@ -2,9 +2,11 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#A9CCE3"
+    android:fillViewport="true"
     tools:context=".MainActivity0">
 
     <LinearLayout
@@ -187,6 +189,7 @@
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -224,6 +227,7 @@
                     android:textSize="11sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -296,8 +300,6 @@
                     android:textSize="11sp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-
 
     </LinearLayout>
 </ScrollView>

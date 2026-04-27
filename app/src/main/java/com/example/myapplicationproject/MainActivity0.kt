@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
 class MainActivity0 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,15 +14,22 @@ class MainActivity0 : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main0)
 
-        // Este es el botón "Ingresar" que está en tu cabecera
-        val boton1 = findViewById<Button>(R.id.btningresar)
-
-        boton1.setOnClickListener {
-            // Te lleva a la pantalla de Login (MainActivity)
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        // Ajustar el padding para que el contenido no quede debajo de la barra de estado
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main_scroll)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
         }
 
-        // HE ELIMINADO LA VARIABLE BOTON2 PORQUE YA NO EXISTE EN TU XML
+        // Referencia al botón "Ingresar" de la cabecera
+        val btnIngresar = findViewById<Button>(R.id.btningresar)
+
+        // Acción: Redirigir a la pantalla de Login (MainActivity)
+        btnIngresar.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            // No ponemos finish() aquí porque queremos que el usuario
+            // pueda volver a leer la info si retrocede desde el login.
+        }
     }
 }

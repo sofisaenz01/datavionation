@@ -14,14 +14,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplicationProject">
         <activity
+            android:name=".gestion_Tipos_Mantenimiento"
+            android:exported="false" />
+        <activity
+            android:name=".Perfil"
+            android:exported="false" />
+        <activity
+            android:name=".gestion_pilotos"
+            android:exported="false" />
+        <activity
+            android:name=".gestion_mantenimiento"
+            android:exported="false" />
+        <activity
+            android:name=".registro_vuelo"
+            android:exported="false" />
+        <activity
+            android:name=".flota_aeronave"
+            android:exported="false" />
+        <activity
             android:name=".DashboardActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity0"
-            android:exported="true"> <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".crear_cuenta"
