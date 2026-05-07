@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplicationProject">
         <activity
+            android:name=".mantenimiento_checklist"
+            android:exported="false" />
+        <activity
             android:name=".gestion_Tipos_Mantenimiento"
             android:exported="false" />
         <activity
@@ -33,7 +36,7 @@
             android:exported="false" />
         <activity
             android:name=".DashboardActivity"
-            android:exported="false" />
+            android:exported="false" /> <!-- MainActivity0 es la pantalla de bienvenida (LAUNCHER) -->
         <activity
             android:name=".MainActivity0"
             android:exported="true">
@@ -45,16 +48,10 @@
         </activity>
         <activity
             android:name=".crear_cuenta"
-            android:exported="false" />
+            android:exported="false" /> <!-- MainActivity es el Login, no debe ser LAUNCHER si ya lo es MainActivity0 -->
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>

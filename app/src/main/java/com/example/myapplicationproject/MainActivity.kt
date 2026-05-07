@@ -20,17 +20,20 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        // Manejo de insets para que el diseño no choque con las barras del sistema
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        // Manejo de insets
+        val mainView = findViewById<android.view.View>(R.id.main)
+        if (mainView != null) {
+            ViewCompat.setOnApplyWindowInsetsListener(mainView) { v, insets ->
+                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+                insets
+            }
         }
 
         // Inicializar Firebase Auth
         auth = FirebaseAuth.getInstance()
 
-        // Referencias de los componentes del XML
+        // Referencias de los componentes
         val email = findViewById<EditText>(R.id.etEmail)
         val password = findViewById<EditText>(R.id.etPassword)
         val loginbtn = findViewById<Button>(R.id.btnLogin)
@@ -41,17 +44,14 @@ class MainActivity : AppCompatActivity() {
             val emailText = email.text.toString().trim()
             val passText = password.text.toString().trim()
 
-            // Validación simple de campos vacíos
             if (emailText.isNotEmpty() && passText.isNotEmpty()) {
                 auth.signInWithEmailAndPassword(emailText, passText)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             Toast.makeText(this, "¡Bienvenida de nuevo!", Toast.LENGTH_SHORT).show()
-                            // Ir al Dashboard tras login exitoso
                             startActivity(Intent(this, DashboardActivity::class.java))
-                            finish() // Evita que al dar "atrás" vuelva al login
+                            finish()
                         } else {
-                            // Mostrar error específico (ej: contraseña incorrecta o usuario no existe)
                             Toast.makeText(
                                 this,
                                 "Error: ${task.exception?.message}",
@@ -70,13 +70,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Opcional: Si el usuario ya está logueado, saltar el login automáticamente
-    override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            startActivity(Intent(this, DashboardActivity::class.java))
-            finish()
-        }
-    }
+    // Se eliminó la redirección automática del onStart para permitir ver el Login siempre.
 }

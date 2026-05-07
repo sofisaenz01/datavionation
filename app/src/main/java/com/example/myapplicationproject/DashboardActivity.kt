@@ -24,18 +24,22 @@ class DashboardActivity : AppCompatActivity() {
         // Inicializar Firebase Auth
         auth = FirebaseAuth.getInstance()
 
-        // Ajuste de insets para diseño Edge-to-Edge (barra de estado y navegación)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        // Ajuste de insets para diseño Edge-to-Edge
+        val mainView = findViewById<android.view.View>(R.id.main)
+        if (mainView != null) {
+            ViewCompat.setOnApplyWindowInsetsListener(mainView) { v, insets ->
+                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+                insets
+            }
         }
 
         // --- REFERENCIAS DE UI (HEADER) ---
-        val btnCerrarSesion = findViewById<Button>(R.id.btnCerrasesion)
+        // ID Unificado: btnCerrarSesion
+        val btnCerrarSesion = findViewById<Button>(R.id.btnCerrarSesion)
         val btnPerfilHeader = findViewById<ImageButton>(R.id.btnPerfil)
 
-        // --- REFERENCIAS DE TARJETAS (Opcional: para actualizar datos dinámicamente) ---
+        // --- REFERENCIAS DE TARJETAS ---
         val tvTotalAeronaves = findViewById<TextView>(R.id.tvTotalAeronaves)
         val tvEnVuelo = findViewById<TextView>(R.id.tvEnVuelo)
         val tvAlertas = findViewById<TextView>(R.id.tvAlertasCriticas)
@@ -47,43 +51,46 @@ class DashboardActivity : AppCompatActivity() {
         val btnNavMantenimiento = findViewById<ImageButton>(R.id.btnNavMantenimiento)
         val btnNavPerfil = findViewById<ImageButton>(R.id.btnNavPerfil)
 
+        // =============================================
         // --- LÓGICA DE BOTONES ---
+        // =============================================
 
-        // Cerrar sesión con Firebase
-        btnCerrarSesion.setOnClickListener {
-            auth.signOut() // Cierra la sesión en Firebase
-            Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, MainActivity::class.java) // Volver al Login
+        // Cerrar sesión con validación de nulidad
+        btnCerrarSesion?.setOnClickListener {
+            auth.signOut()
+            Toast.makeText(this, "Sesión cerrada correctamente", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, MainActivity0::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
         }
 
-        btnPerfilHeader.setOnClickListener {
+        btnPerfilHeader?.setOnClickListener {
             startActivity(Intent(this, Perfil::class.java))
         }
 
+        // =============================================
         // --- NAVEGACIÓN INFERIOR ---
+        // =============================================
 
-        btnNavHome.setOnClickListener {
-            // Ya estás aquí, puedes hacer scroll al inicio o mostrar un mensaje
-            Toast.makeText(this, "Inicio", Toast.LENGTH_SHORT).show()
+        btnNavHome?.setOnClickListener {
+            Toast.makeText(this, "Ya estás en el Inicio", Toast.LENGTH_SHORT).show()
         }
 
-        btnNavVuelos.setOnClickListener {
+        btnNavVuelos?.setOnClickListener {
             startActivity(Intent(this, registro_vuelo::class.java))
         }
 
-        btnNavAeronaves.setOnClickListener {
+        btnNavAeronaves?.setOnClickListener {
             startActivity(Intent(this, flota_aeronave::class.java))
         }
 
-        btnNavMantenimiento.setOnClickListener {
+        btnNavMantenimiento?.setOnClickListener {
             startActivity(Intent(this, gestion_mantenimiento::class.java))
         }
 
-        btnNavPerfil.setOnClickListener {
-            // El icono "Piloto" en el menú lleva a la gestión de pilotos o perfil
-            startActivity(Intent(this, Perfil::class.java))
+        btnNavPerfil?.setOnClickListener {
+            startActivity(Intent(this, gestion_pilotos::class.java))
         }
     }
 }

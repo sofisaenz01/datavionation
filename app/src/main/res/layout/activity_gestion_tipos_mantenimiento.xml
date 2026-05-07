@@ -58,7 +58,7 @@
             android:background="@android:color/transparent"
             android:contentDescription="Perfil"
             android:scaleType="centerCrop"
-            android:src="@drawable/Perfil" />
+            android:src="@drawable/perfil" />
 
     </LinearLayout>
 
@@ -432,7 +432,7 @@
 
         <ImageButton android:id="@+id/btnNavHome" android:layout_width="0dp" android:layout_height="match_parent"
             android:layout_weight="1" android:background="#181143" android:contentDescription="Inicio"
-            android:padding="10dp" android:scaleType="centerInside" android:src="@drawable/Casa" />
+            android:padding="10dp" android:scaleType="centerInside" android:src="@drawable/casa" />
 
         <ImageButton android:id="@+id/btnNavVuelos" android:layout_width="0dp" android:layout_height="match_parent"
             android:layout_weight="1" android:background="#181143" android:contentDescription="Vuelos"
@@ -440,15 +440,15 @@
 
         <ImageButton android:id="@+id/btnNavAeronaves" android:layout_width="0dp" android:layout_height="match_parent"
             android:layout_weight="1" android:background="#181143" android:contentDescription="Aeronaves"
-            android:padding="10dp" android:scaleType="centerInside" android:src="@drawable/Registro" />
+            android:padding="10dp" android:scaleType="centerInside" android:src="@drawable/registro" />
 
         <ImageButton android:id="@+id/btnNavMantenimiento" android:layout_width="0dp" android:layout_height="match_parent"
             android:layout_weight="1" android:background="#3949AB" android:contentDescription="Mantenimiento"
-            android:padding="10dp" android:scaleType="centerInside" android:src="@drawable/Mantenimiento" />
+            android:padding="10dp" android:scaleType="centerInside" android:src="@drawable/mantenimiento" />
 
         <ImageButton android:id="@+id/btnNavPerfil" android:layout_width="0dp" android:layout_height="match_parent"
             android:layout_weight="1" android:background="#181143" android:contentDescription="Perfil"
-            android:padding="10dp" android:scaleType="centerInside" android:src="@drawable/Piloto" />
+            android:padding="10dp" android:scaleType="centerInside" android:src="@drawable/piloto" />
 
     </LinearLayout>
 

@@ -56,7 +56,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/Perfil"
+            android:src="@drawable/perfil"
             android:scaleType="centerCrop"
             android:contentDescription="Perfil" />
 
@@ -632,7 +632,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#181143"
-            android:src="@drawable/Casa"
+            android:src="@drawable/casa"
             android:contentDescription="Inicio"
             android:scaleType="centerInside"
             android:padding="10dp" />
@@ -654,7 +654,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#181143"
-            android:src="@drawable/Registro"
+            android:src="@drawable/registro"
             android:contentDescription="Aeronaves"
             android:scaleType="centerInside"
             android:padding="10dp" />
@@ -665,7 +665,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#181143"
-            android:src="@drawable/Mantenimiento"
+            android:src="@drawable/mantenimiento"
             android:contentDescription="Mantenimiento"
             android:scaleType="centerInside"
             android:padding="10dp" />
@@ -676,7 +676,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#3949AB"
-            android:src="@drawable/Piloto"
+            android:src="@drawable/piloto"
             android:contentDescription="Pilotos"
             android:scaleType="centerInside"
             android:padding="10dp" />
